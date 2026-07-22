@@ -7,7 +7,7 @@ export default function CallToAction() {
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1920&q=80"
-          alt="Aurelia Hotel"
+          alt="Hendry Hotel"
           className="w-full h-full object-cover"
           loading="lazy"
         />

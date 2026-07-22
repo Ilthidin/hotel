@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
 import { navLinks } from "../../data/hotelData";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const { isScrolled } = useScrollPosition();
@@ -33,9 +34,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <Link to="/" className="relative group">
-              <span className="font-heading text-2xl tracking-[0.3em] font-semibold text-white">
-                AURELIA
-              </span>
+              <Logo />
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
             </Link>
 
@@ -67,7 +66,7 @@ export default function Navbar() {
             </div>
 
             <a
-              href="mailto:reservations@aurelia-hotel.com"
+              href="mailto:reservations@hendry-hotel.com"
               className="hidden md:block px-6 py-2.5 border border-accent/50 text-accent text-xs tracking-[0.2em] uppercase hover:bg-accent hover:text-primary transition-all duration-300"
             >
               Book Now
@@ -130,7 +129,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ delay: 0.3, duration: 0.4 }}
-                href="mailto:reservations@aurelia-hotel.com"
+                href="mailto:reservations@hendry-hotel.com"
                 className="mt-4 px-8 py-3 border border-accent text-accent text-sm tracking-[0.2em] uppercase hover:bg-accent hover:text-primary transition-all duration-300"
               >
                 Book Now

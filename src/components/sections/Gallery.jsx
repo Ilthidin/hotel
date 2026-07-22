@@ -9,7 +9,7 @@ export default function Gallery() {
         <SectionTitle
           badge="Gallery"
           title={<>Visual <span className="italic text-accent">Stories</span></>}
-          subtitle="A glimpse into the world of Aurelia — where every moment becomes a lasting memory."
+          subtitle="A glimpse into the world of Hendry — where every moment becomes a lasting memory."
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px]">

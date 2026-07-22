@@ -148,7 +148,7 @@ export default function RoomDetail() {
                 </div>
 
                 <a
-                  href="mailto:reservations@aurelia-hotel.com"
+                  href="mailto:reservations@hendry-hotel.com"
                   className="block w-full py-4 bg-accent text-primary text-center text-sm tracking-[0.2em] uppercase font-medium hover:bg-accent-light transition-all duration-300"
                 >
                   Reserve This Room

@@ -10,7 +10,7 @@ export default function About() {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1920&q=80"
-            alt="Aurelia Hotel Exterior"
+            alt="Hendry Hotel Exterior"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary" />
@@ -31,7 +31,7 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-heading text-5xl md:text-7xl text-white"
           >
-            About <span className="italic text-accent">Aurelia</span>
+            About <span className="italic text-accent">Hendry</span>
           </motion.h1>
         </div>
       </section>
@@ -56,20 +56,20 @@ export default function About() {
               </h2>
               <div className="space-y-6 text-white/60 leading-relaxed">
                 <p>
-                  Aurelia was born from a simple yet profound belief: that luxury
+                  Hendry was born from a simple yet profound belief: that luxury
                   should be felt, not merely seen. Founded in {hotelInfo.founded} by
                   Alexandros Petridis, our hotel emerged from a desire to create a
                   space where the timeless beauty of the Mediterranean meets
                   contemporary elegance.
                 </p>
                 <p>
-                  Perched on the volcanic cliffs of {hotelInfo.location}, Aurelia draws
+                  Perched on the volcanic cliffs of {hotelInfo.location}, Hendry draws
                   inspiration from the island's dramatic landscapes — the deep blue
                   of the Aegean, the blinding white of traditional architecture, and
                   the golden hues of the setting sun.
                 </p>
                 <p>
-                  Every aspect of Aurelia has been thoughtfully designed to honor the
+                  Every aspect of Hendry has been thoughtfully designed to honor the
                   traditions of Greek hospitality while pushing the boundaries of
                   modern luxury. We believe that true sophistication lies in the
                   details — from the hand-selected linens to the locally sourced
@@ -88,7 +88,7 @@ export default function About() {
               <div className="aspect-[4/5] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
-                  alt="Aurelia Hotel"
+                  alt="Hendry Hotel"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -167,7 +167,7 @@ export default function About() {
           <SectionTitle
             badge="Leadership"
             title={<>Meet the <span className="italic text-accent">Visionaries</span></>}
-            subtitle="The passionate individuals who bring the Aurelia vision to life every day."
+            subtitle="The passionate individuals who bring the Hendry vision to life every day."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -204,7 +204,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <SectionTitle
             badge="Moments"
-            title={<>Life at <span className="italic text-accent">Aurelia</span></>}
+            title={<>Life at <span className="italic text-accent">Hendry</span></>}
           />
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px]">
@@ -242,14 +242,14 @@ export default function About() {
               Join Us
             </span>
             <h2 className="font-heading text-4xl md:text-5xl text-white mb-6">
-              Experience Aurelia for Yourself
+              Experience Hendry for Yourself
             </h2>
             <p className="text-white/50 text-lg max-w-xl mx-auto mb-10">
               We look forward to welcoming you and creating memories that will
               last a lifetime.
             </p>
             <a
-              href="mailto:reservations@aurelia-hotel.com"
+              href="mailto:reservations@hendry-hotel.com"
               className="inline-flex items-center gap-3 px-12 py-5 bg-accent text-primary text-sm tracking-[0.2em] uppercase font-medium hover:bg-accent-light transition-all duration-300"
             >
               Plan Your Stay

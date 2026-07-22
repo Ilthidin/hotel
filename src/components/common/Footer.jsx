@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { hotelInfo, navLinks } from "../../data/hotelData";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
@@ -8,9 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block">
-              <span className="font-heading text-2xl tracking-[0.3em] font-semibold text-white">
-                AURELIA
-              </span>
+              <Logo />
             </Link>
             <p className="mt-6 text-white/50 text-sm leading-relaxed max-w-xs">
               {hotelInfo.description.substring(0, 120)}...

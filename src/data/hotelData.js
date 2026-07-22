@@ -1,11 +1,11 @@
 export const hotelInfo = {
-  name: "AURELIA",
+  name: "HENDRY",
   tagline: "Where Luxury Meets Serenity",
   description:
-    "Nestled in the heart of the Mediterranean, Aurelia is a sanctuary of refined elegance. Every detail has been curated to provide an unparalleled experience of comfort and sophistication.",
+    "Nestled in the heart of the Mediterranean, Hendry is a sanctuary of refined elegance. Every detail has been curated to provide an unparalleled experience of comfort and sophistication.",
   founded: "2018",
   location: "Santorini, Greece",
-  email: "reservations@aurelia-hotel.com",
+  email: "reservations@hendry-hotel.com",
   phone: "+30 22860 71234",
 };
 
@@ -81,7 +81,7 @@ export const rooms = [
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
     ],
     description:
-      "The crown jewel of Aurelia. The Caldera Penthouse spans the entire top floor, offering 360-degree views that will take your breath away. A private rooftop terrace with a heated pool, outdoor kitchen, and lounge area make this the ultimate retreat.",
+      "The crown jewel of Hendry. The Caldera Penthouse spans the entire top floor, offering 360-degree views that will take your breath away. A private rooftop terrace with a heated pool, outdoor kitchen, and lounge area make this the ultimate retreat.",
     amenities: [
       "Rooftop heated pool",
       "360° panoramic views",
@@ -211,21 +211,21 @@ export const stats = [
 export const testimonials = [
   {
     id: 1,
-    text: "Aurelia redefined what luxury means to us. The attention to detail is extraordinary — from the hand-selected artwork in our suite to the personalized welcome note.",
+    text: "Hendry redefined what luxury means to us. The attention to detail is extraordinary — from the hand-selected artwork in our suite to the personalized welcome note.",
     author: "Charlotte & James",
     origin: "London, UK",
     rating: 5,
   },
   {
     id: 2,
-    text: "We've stayed at world-class hotels across the globe, but nothing compares to the warmth and elegance of Aurelia. The sunset from our terrace was magical.",
+    text: "We've stayed at world-class hotels across the globe, but nothing compares to the warmth and elegance of Hendry. The sunset from our terrace was magical.",
     author: "Marco & Elena",
     origin: "Milan, Italy",
     rating: 5,
   },
   {
     id: 3,
-    text: "The team at Aurelia made our anniversary unforgettable. Every moment felt curated yet effortless — the hallmark of true luxury hospitality.",
+    text: "The team at Hendry made our anniversary unforgettable. Every moment felt curated yet effortless — the hallmark of true luxury hospitality.",
     author: "Sarah Chen",
     origin: "Singapore",
     rating: 5,
@@ -237,7 +237,7 @@ export const teamMembers = [
     name: "Alexandros Petridis",
     role: "Founder & Director",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
-    bio: "With over 20 years in luxury hospitality, Alexandros founded Aurelia to create a new standard of Mediterranean elegance.",
+    bio: "With over 20 years in luxury hospitality, Alexandros founded Hendry to create a new standard of Mediterranean elegance.",
   },
   {
     name: "Elena Vasiliou",
@@ -275,7 +275,7 @@ export const values = [
   {
     title: "Sustainable Luxury",
     description:
-      "Our commitment to the environment is woven into every aspect of the Aurelia experience, without compromise.",
+      "Our commitment to the environment is woven into every aspect of the Hendry experience, without compromise.",
     icon: "⬡",
   },
 ];

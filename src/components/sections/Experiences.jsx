@@ -9,7 +9,7 @@ export default function Experiences() {
         <SectionTitle
           badge="Experiences"
           title={<>Curated <span className="italic text-accent">Moments</span></>}
-          subtitle="Beyond accommodation, Aurelia offers a world of experiences designed to immerse you in the essence of the Mediterranean."
+          subtitle="Beyond accommodation, Hendry offers a world of experiences designed to immerse you in the essence of the Mediterranean."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
