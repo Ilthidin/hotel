@@ -8,7 +8,7 @@ export default function CallToAction() {
     <section className="relative py-40 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/images/photo-1571003123894-1f0594d2b5d9-1920.jpg"
+          src="/images/atheneum-loft-8-1920.jpg"
           alt="Hendry Hotel"
           className="w-full h-full object-cover"
           loading="lazy"

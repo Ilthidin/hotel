@@ -20,7 +20,7 @@ export default function Rooms() {
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/photo-1618773928121-c32242e63f39-1920.jpg"
+            src="/images/horizon-suite-1920.jpg"
             alt="Luxury Hotel Room"
             className="w-full h-full object-cover"
           />

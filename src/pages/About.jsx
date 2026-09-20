@@ -14,7 +14,7 @@ export default function About() {
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/photo-1578683010236-d716f9a3f461-1920.jpg"
+            src="/images/terrace-villa-1920.jpg"
             alt="Hendry Hotel Exterior"
             className="w-full h-full object-cover"
           />
@@ -104,7 +104,7 @@ export default function About() {
               loop
               playsInline
               className="w-full h-full object-cover"
-              poster="/images/photo-1571003123894-1f0594d2b5d9-1920.jpg"
+              poster="/images/atheneum-loft-8-1920.jpg"
             >
               <source
                 src="/videos/santorini-aerial.mp4"

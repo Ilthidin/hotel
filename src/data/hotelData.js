@@ -20,11 +20,11 @@ export const rooms = [
     maxGuests: 2,
     bedType: "King",
     floor: "5th Floor",
-    image: "/images/photo-1618773928121-c32242e63f39-800.jpg",
+    image: "/images/horizon-suite-800.jpg",
     gallery: [
-      "/images/photo-1618773928121-c32242e63f39-1200.jpg",
-      "/images/photo-1590490360182-c33d57733427-1200.jpg",
-      "/images/photo-1582719508461-905c673771fd-1200.jpg",
+      "/images/horizon-suite-1200.jpg",
+      "/images/atheneum-loft-1200.jpg",
+      "/images/asset-3-1200.jpg",
     ],
     description:
       "Perched on the fifth floor, The Horizon Suite offers breathtaking panoramic views of the Aegean Sea. Floor-to-ceiling windows frame the infinite blue, while the private terrace becomes your personal front row to the most spectacular sunsets on earth.",
@@ -47,11 +47,11 @@ export const rooms = [
     maxGuests: 4,
     bedType: "2 King Beds",
     floor: "Ground Floor",
-    image: "/images/photo-1578683010236-d716f9a3f461-800.jpg",
+    image: "/images/terrace-villa-800.jpg",
     gallery: [
-      "/images/photo-1578683010236-d716f9a3f461-1200.jpg",
-      "/images/photo-1631049307264-da0ec9d70304-1200.jpg",
-      "/images/photo-1584132967334-10e028bd69f7-1200.jpg",
+      "/images/terrace-villa-1200.jpg",
+      "/images/asset-5-1200.jpg",
+      "/images/atheneum-loft-9-1200.jpg",
     ],
     description:
       "A private oasis of calm, The Terrace Villa extends seamlessly from indoor luxury to outdoor paradise. Your own infinity plunge pool merges with the horizon, while ancient olive trees provide dappled shade over the al fresco dining area.",
@@ -74,11 +74,11 @@ export const rooms = [
     maxGuests: 4,
     bedType: "Emperor King",
     floor: "6th Floor",
-    image: "/images/photo-1622396481328-9b1b78cdd9fd-800.jpg",
+    image: "/images/caldera-penthouse-800.jpg",
     gallery: [
-      "/images/photo-1622396481328-9b1b78cdd9fd-1200.jpg",
-      "/images/photo-1595576508898-0ad5c879a061-1200.jpg",
-      "/images/photo-1560448204-e02f11c3d0e2-1200.jpg",
+      "/images/caldera-penthouse-1200.jpg",
+      "/images/asset-4-1200.jpg",
+      "/images/asset-1200.jpg",
     ],
     description:
       "The crown jewel of Hendry. The Caldera Penthouse spans the entire top floor, offering 360-degree views that will take your breath away. A private rooftop terrace with a heated pool, outdoor kitchen, and lounge area make this the ultimate retreat.",
@@ -101,11 +101,11 @@ export const rooms = [
     maxGuests: 2,
     bedType: "Queen",
     floor: "Ground Floor",
-    image: "/images/photo-1611892440504-42a792e24d32-800.jpg",
+    image: "/images/garden-retreat-800.jpg",
     gallery: [
-      "/images/photo-1611892440504-42a792e24d32-1200.jpg",
-      "/images/photo-1595576508898-0ad5c879a061-1200.jpg",
-      "/images/photo-1560448204-e02f11c3d0e2-1200.jpg",
+      "/images/garden-retreat-1200.jpg",
+      "/images/asset-4-1200.jpg",
+      "/images/asset-1200.jpg",
     ],
     description:
       "Immerse yourself in the lush Mediterranean gardens from your private terrace. The Garden Retreat offers an intimate connection with nature, surrounded by bougainvillea, jasmine, and the gentle sound of water features.",
@@ -128,11 +128,11 @@ export const rooms = [
     maxGuests: 2,
     bedType: "King",
     floor: "4th Floor",
-    image: "/images/photo-1571896349842-33c89424de2d-800.jpg",
+    image: "/images/honeymoon-suite-800.jpg",
     gallery: [
-      "/images/photo-1571896349842-33c89424de2d-1200.jpg",
-      "/images/photo-1590490360182-c33d57733427-1200.jpg",
-      "/images/photo-1582719508461-905c673771fd-1200.jpg",
+      "/images/honeymoon-suite-1200.jpg",
+      "/images/atheneum-loft-1200.jpg",
+      "/images/asset-3-1200.jpg",
     ],
     description:
       "Designed for romance, The Honeymoon Suite features a cantilevered glass floor section revealing the sea below, a private jacuzzi on the terrace, and an elegant bedroom with a canopy bed draped in flowing white linens.",
@@ -155,11 +155,11 @@ export const rooms = [
     maxGuests: 3,
     bedType: "King + Daybed",
     floor: "3rd Floor",
-    image: "/images/photo-1590490360182-c33d57733427-800.jpg",
+    image: "/images/atheneum-loft-800.jpg",
     gallery: [
-      "/images/photo-1590490360182-c33d57733427-1200.jpg",
-      "/images/photo-1618773928121-c32242e63f39-1200.jpg",
-      "/images/photo-1584132967334-10e028bd69f7-1200.jpg",
+      "/images/atheneum-loft-1200.jpg",
+      "/images/horizon-suite-1200.jpg",
+      "/images/atheneum-loft-9-1200.jpg",
     ],
     description:
       "A double-height space flooded with natural light, The Atheneum Loft is inspired by the creative spirit of Greek intellectuals. A curated library, writing desk, and sweeping views make it perfect for those who seek inspiration.",
@@ -179,25 +179,25 @@ export const experiences = [
     id: 1,
     title: "Private Yacht Charter",
     description: "Sail the caldera at sunset aboard a traditional wooden ca├»que.",
-    image: "/images/photo-1544551763-46a013bb70d5-800.jpg",
+    image: "/images/atheneum-loft-2-800.jpg",
   },
   {
     id: 2,
     title: "Wine Tasting Journey",
     description: "Discover Assyrtiko and Mavrotragano at exclusive volcanic vineyards.",
-    image: "/images/photo-1510812431401-41d2bd2722f3-800.jpg",
+    image: "/images/atheneum-loft-3-800.jpg",
   },
   {
     id: 3,
     title: "Cliffside Dining",
     description: "An intimate seven-course dinner perched above the caldera.",
-    image: "/images/photo-1414235077428-338989a2e8c0-800.jpg",
+    image: "/images/atheneum-loft-4-800.jpg",
   },
   {
     id: 4,
     title: "Wellness Sanctuary",
     description: "Holistic treatments inspired by ancient Greek healing rituals.",
-    image: "/images/photo-1544161515-4ab6ce6db874-800.jpg",
+    image: "/images/atheneum-loft-5-800.jpg",
   },
 ];
 
@@ -236,19 +236,19 @@ export const teamMembers = [
   {
     name: "Alexandros Petridis",
     role: "Founder & Director",
-    image: "/images/photo-1560250097-0b93528c311a-400.jpg",
+    image: "/images/atheneum-loft-6-400.jpg",
     bio: "With over 20 years in luxury hospitality, Alexandros founded Hendry to create a new standard of Mediterranean elegance.",
   },
   {
     name: "Elena Vasiliou",
     role: "Head of Guest Relations",
-    image: "/images/photo-1573496359142-b8d87734a5a2-400.jpg",
+    image: "/images/atheneum-loft-7-400.jpg",
     bio: "Elena ensures every guest's journey is seamless from arrival to departure, crafting personalized experiences that exceed expectations.",
   },
   {
     name: "Dimitris Alexopoulos",
     role: "Executive Chef",
-    image: "/images/photo-1414235077428-338989a2e8c0-800.jpg",
+    image: "/images/atheneum-loft-4-800.jpg",
     bio: "A Michelin-starred chef who brings the flavors of the Aegean to life, Dimitris transforms local ingredients into culinary masterpieces.",
   },
 ];
@@ -282,32 +282,32 @@ export const values = [
 
 export const galleryImages = [
   {
-    src: "/images/photo-1571003123894-1f0594d2b5d9-800.jpg",
+    src: "/images/atheneum-loft-8-800.jpg",
     alt: "Hotel exterior at sunset",
     span: "col-span-2 row-span-2",
   },
   {
-    src: "/images/photo-1584132967334-10e028bd69f7-800.jpg",
+    src: "/images/atheneum-loft-9-800.jpg",
     alt: "Infinity pool overlooking the sea",
     span: "col-span-1 row-span-1",
   },
   {
-    src: "/images/photo-1551882547-ff40c63fe5fa-800.jpg",
+    src: "/images/atheneum-loft-10-800.jpg",
     alt: "Elegant room interior",
     span: "col-span-1 row-span-1",
   },
   {
-    src: "/images/photo-1414235077428-338989a2e8c0-800.jpg",
+    src: "/images/atheneum-loft-4-800.jpg",
     alt: "Fine dining experience",
     span: "col-span-1 row-span-2",
   },
   {
-    src: "/images/photo-1578683010236-d716f9a3f461-1200.jpg",
+    src: "/images/terrace-villa-1200.jpg",
     alt: "Spa treatment room",
     span: "col-span-1 row-span-1",
   },
   {
-    src: "/images/photo-1507525428034-b723cf961d3e-800.jpg",
+    src: "/images/atheneum-loft-11-800.jpg",
     alt: "Private beach",
     span: "col-span-2 row-span-1",
   },

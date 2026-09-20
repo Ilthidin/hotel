@@ -13,7 +13,7 @@ export default function Hero() {
           loop
           playsInline
           className="w-full h-full object-cover"
-          poster="/images/photo-1571003123894-1f0594d2b5d9-1920.jpg"
+          poster="/images/atheneum-loft-8-1920.jpg"
         >
           <source
             src="/videos/santorini-drone.mp4"
