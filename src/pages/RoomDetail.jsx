@@ -1,9 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { rooms } from "../data/hotelData";
+import { useContent } from "../context/ContentContext";
 
 export default function RoomDetail() {
   const { slug } = useParams();
+  const { rooms } = useContent().content;
   const room = rooms.find((r) => r.slug === slug);
 
   if (!room) {

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "../../hooks/useInView";
-import { stats } from "../../data/hotelData";
+import { useContent } from "../../context/ContentContext";
 
 export default function Stats() {
   const [ref, isInView] = useInView({ threshold: 0.3 });
+  const { stats } = useContent().content;
 
   return (
     <section ref={ref} className="py-24 border-y border-white/5 bg-secondary/30">

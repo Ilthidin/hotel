@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import { hotelInfo, navLinks } from "../../data/hotelData";
+import { useContent } from "../../context/ContentContext";
+import { navLinks } from "../../data/hotelData";
 import Logo from "./Logo";
 
 export default function Footer() {
+  const { hotelInfo } = useContent().content;
   return (
     <footer className="bg-primary border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">

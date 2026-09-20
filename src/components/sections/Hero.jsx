@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useContent } from "../../context/ContentContext";
 
 export default function Hero() {
+  const { hotelInfo } = useContent().content;
   return (
     <section className="relative h-screen overflow-hidden">
       <div className="absolute inset-0">
@@ -10,10 +13,10 @@ export default function Hero() {
           loop
           playsInline
           className="w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1920&q=80"
+          poster="/images/photo-1571003123894-1f0594d2b5d9-1920.jpg"
         >
           <source
-            src="https://cdn.coverr.co/videos/coverr-drone-view-of-santorini-3893/1080p.mp4"
+            src="/videos/santorini-drone.mp4"
             type="video/mp4"
           />
         </video>
@@ -28,7 +31,7 @@ export default function Hero() {
           className="mb-6"
         >
           <span className="text-xs tracking-[0.5em] uppercase text-accent/80 border border-accent/30 px-6 py-2.5 inline-block">
-            Santorini, Greece
+            {hotelInfo.heroBadge}
           </span>
         </motion.div>
 
@@ -38,10 +41,8 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="font-heading text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-medium text-white leading-[0.95] tracking-tight"
         >
-          Where Luxury
-          <br />
-          Meets{" "}
-          <span className="italic text-accent">Serenity</span>
+          {hotelInfo.heroTitle}{" "}
+          <span className="italic text-accent">{hotelInfo.heroTitleAccent}</span>
         </motion.h1>
 
         <motion.p
@@ -50,8 +51,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-8 text-white/60 text-lg md:text-xl max-w-xl leading-relaxed"
         >
-          A curated collection of extraordinary spaces designed to elevate
-          your senses and nourish your soul.
+          {hotelInfo.heroSubtitle}
         </motion.p>
 
         <motion.div
@@ -60,21 +60,21 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.1 }}
           className="mt-12 flex flex-col sm:flex-row gap-4"
         >
-          <a
-            href="/rooms"
+          <Link
+            to="/rooms"
             className="px-10 py-4 bg-accent text-primary text-sm tracking-[0.2em] uppercase font-medium hover:bg-accent-light transition-all duration-300 inline-flex items-center justify-center gap-3"
           >
             Explore Rooms
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
-          <a
-            href="/about"
+          </Link>
+          <Link
+            to="/about"
             className="px-10 py-4 border border-white/20 text-white text-sm tracking-[0.2em] uppercase hover:bg-white/5 transition-all duration-300 inline-flex items-center justify-center"
           >
             Our Story
-          </a>
+          </Link>
         </motion.div>
       </div>
 

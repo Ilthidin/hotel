@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { testimonials } from "../../data/hotelData";
+import { useContent } from "../../context/ContentContext";
 import SectionTitle from "../common/SectionTitle";
 
 export default function Testimonials() {
+  const { testimonials } = useContent().content;
   return (
     <section className="py-32 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">

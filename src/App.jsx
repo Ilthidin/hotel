@@ -6,6 +6,13 @@ import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import RoomDetail from "./pages/RoomDetail";
 import About from "./pages/About";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import CollectionManager from "./pages/admin/CollectionManager";
+import SingletonEditor from "./pages/admin/SingletonEditor";
+import { AuthProvider } from "./context/AuthContext";
+import { ContentProvider } from "./context/ContentContext";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -15,10 +22,9 @@ function ScrollToTop() {
   return null;
 }
 
-export default function App() {
+function SiteLayout() {
   return (
-    <div className="min-h-screen bg-primary text-white">
-      <ScrollToTop />
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,6 +33,35 @@ export default function App() {
         <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
-    </div>
+    </>
+  );
+}
+
+function AdminRoutes() {
+  return (
+    <Routes>
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<AdminDashboard />} />
+        <Route path="content/hotelInfo" element={<SingletonEditor collectionKey="hotelInfo" />} />
+        <Route path="content/:collectionKey" element={<CollectionManager />} />
+      </Route>
+    </Routes>
+  );
+}
+
+export default function App() {
+  const { pathname } = useLocation();
+  const isAdmin = pathname.startsWith("/admin");
+
+  return (
+    <AuthProvider>
+      <ContentProvider>
+        <div className="min-h-screen bg-primary text-white">
+          <ScrollToTop />
+          {isAdmin ? <AdminRoutes /> : <SiteLayout />}
+        </div>
+      </ContentProvider>
+    </AuthProvider>
   );
 }

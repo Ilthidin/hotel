@@ -1,15 +1,20 @@
 import { motion } from "framer-motion";
-import { hotelInfo, teamMembers, values, galleryImages } from "../data/hotelData";
+import { useContent } from "../context/ContentContext";
 import SectionTitle from "../components/common/SectionTitle";
 
 export default function About() {
+  const { hotelInfo, teamMembers, values, galleryImages } = useContent().content;
+  const storyParagraphs = (hotelInfo.aboutStory || "")
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
   return (
     <main>
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1920&q=80"
+            src="/images/photo-1578683010236-d716f9a3f461-1920.jpg"
             alt="Hendry Hotel Exterior"
             className="w-full h-full object-cover"
           />
@@ -55,26 +60,9 @@ export default function About() {
                 <span className="italic text-accent">Extraordinary Places</span>
               </h2>
               <div className="space-y-6 text-white/60 leading-relaxed">
-                <p>
-                  Hendry was born from a simple yet profound belief: that luxury
-                  should be felt, not merely seen. Founded in {hotelInfo.founded} by
-                  Alexandros Petridis, our hotel emerged from a desire to create a
-                  space where the timeless beauty of the Mediterranean meets
-                  contemporary elegance.
-                </p>
-                <p>
-                  Perched on the volcanic cliffs of {hotelInfo.location}, Hendry draws
-                  inspiration from the island's dramatic landscapes — the deep blue
-                  of the Aegean, the blinding white of traditional architecture, and
-                  the golden hues of the setting sun.
-                </p>
-                <p>
-                  Every aspect of Hendry has been thoughtfully designed to honor the
-                  traditions of Greek hospitality while pushing the boundaries of
-                  modern luxury. We believe that true sophistication lies in the
-                  details — from the hand-selected linens to the locally sourced
-                  ingredients in our kitchen.
-                </p>
+                {storyParagraphs.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
               </div>
             </motion.div>
 
@@ -87,7 +75,7 @@ export default function About() {
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
+                  src={hotelInfo.aboutImage}
                   alt="Hendry Hotel"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -116,10 +104,10 @@ export default function About() {
               loop
               playsInline
               className="w-full h-full object-cover"
-              poster="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1920&q=80"
+              poster="/images/photo-1571003123894-1f0594d2b5d9-1920.jpg"
             >
               <source
-                src="https://cdn.coverr.co/videos/coverr-aerial-view-of-santorini-1573/1080p.mp4"
+                src="/videos/santorini-aerial.mp4"
                 type="video/mp4"
               />
             </video>
@@ -155,44 +143,6 @@ export default function About() {
                 </span>
                 <h3 className="font-heading text-xl text-white mb-4">{val.title}</h3>
                 <p className="text-sm text-white/50 leading-relaxed">{val.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-32 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle
-            badge="Leadership"
-            title={<>Meet the <span className="italic text-accent">Visionaries</span></>}
-            subtitle="The passionate individuals who bring the Hendry vision to life every day."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {teamMembers.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.15 }}
-                className="group"
-              >
-                <div className="aspect-[3/4] overflow-hidden mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <span className="text-xs tracking-[0.2em] uppercase text-accent block mb-2">
-                  {member.role}
-                </span>
-                <h3 className="font-heading text-2xl text-white mb-3">{member.name}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{member.bio}</p>
               </motion.div>
             ))}
           </div>

@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useContent } from "../../context/ContentContext";
 
 export default function CallToAction() {
+  const { hotelInfo } = useContent().content;
   return (
     <section className="relative py-40 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1920&q=80"
+          src="/images/photo-1571003123894-1f0594d2b5d9-1920.jpg"
           alt="Hendry Hotel"
           className="w-full h-full object-cover"
           loading="lazy"
@@ -22,7 +24,7 @@ export default function CallToAction() {
           transition={{ duration: 0.6 }}
           className="text-xs tracking-[0.4em] uppercase text-accent block mb-6"
         >
-          Begin Your Journey
+          {hotelInfo.ctaBadge}
         </motion.span>
 
         <motion.h2
@@ -32,7 +34,7 @@ export default function CallToAction() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="font-heading text-4xl md:text-6xl text-white leading-tight"
         >
-          Your Escape Awaits
+          {hotelInfo.ctaTitle}
         </motion.h2>
 
         <motion.p
@@ -42,8 +44,7 @@ export default function CallToAction() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mt-6 text-white/50 text-lg max-w-xl mx-auto"
         >
-          Discover a world where every detail has been considered, every moment
-          has been crafted, and every experience is uniquely yours.
+          {hotelInfo.ctaText}
         </motion.p>
 
         <motion.div
