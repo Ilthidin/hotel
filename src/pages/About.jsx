@@ -88,38 +88,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative aspect-video overflow-hidden"
-          >
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-              poster="/images/atheneum-loft-8-1920.jpg"
-            >
-              <source
-                src="/videos/santorini-aerial.mp4"
-                type="video/mp4"
-              />
-            </video>
-            <div className="absolute inset-0 bg-primary/30 flex items-center justify-center">
-              <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <div className="w-0 h-0 border-l-[12px] border-l-white border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1" />
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Values */}
       <section className="py-32 px-6 lg:px-8 bg-secondary/20">
         <div className="max-w-7xl mx-auto">

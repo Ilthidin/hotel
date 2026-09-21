@@ -1,26 +1,74 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useContent } from "../../context/ContentContext";
 
+const VIDEOS = [
+  { src: "/videos/santorini-drone.mp4", poster: "/images/atheneum-loft-8-1920.jpg" },
+  { src: "/videos/santorini-aerial.mp4", poster: "/images/atheneum-loft-8-1920.jpg" },
+];
+
 export default function Hero() {
   const { hotelInfo } = useContent().content;
+  const [active, setActive] = useState(1);
+  const [visible, setVisible] = useState(true);
+  const videoRefs = useRef([]);
+  const switchingRef = useRef(false);
+
+  useEffect(() => {
+    videoRefs.current.forEach((el, i) => {
+      if (!el) return;
+      if (i === active) {
+        el.currentTime = 0;
+        el.play().catch(() => {});
+      } else {
+        el.pause();
+      }
+    });
+  }, [active]);
+
+  const beginFade = () => {
+    if (switchingRef.current) return;
+    switchingRef.current = true;
+    setVisible(false);
+    setTimeout(() => {
+      setActive((a) => (a + 1) % VIDEOS.length);
+    }, 900);
+    setTimeout(() => {
+      setVisible(true);
+      switchingRef.current = false;
+    }, 1300);
+  };
+
+  const handleTimeUpdate = (e) => {
+    const el = e.currentTarget;
+    if (el.duration && el.duration - el.currentTime <= 1.2) beginFade();
+  };
+
   return (
     <section className="relative h-screen overflow-hidden">
-      <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          poster="/images/atheneum-loft-8-1920.jpg"
-        >
-          <source
-            src="/videos/santorini-drone.mp4"
-            type="video/mp4"
+      <div className="absolute inset-0 bg-black">
+        {VIDEOS.map((video, i) => (
+          <video
+            key={video.src}
+            ref={(el) => (videoRefs.current[i] = el)}
+            src={video.src}
+            poster={video.poster}
+            autoPlay
+            muted
+            playsInline
+            onTimeUpdate={handleTimeUpdate}
+            onEnded={() => i === active && beginFade()}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-900 ${
+              i === active && visible ? "opacity-100" : "opacity-0"
+            }`}
           />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary" />
+        ))}
+        <div
+          className={`absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary transition-opacity duration-900 ${
+            visible ? "opacity-100" : "opacity-0"
+          }`}
+        />
       </div>
 
       <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">

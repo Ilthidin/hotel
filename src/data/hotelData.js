@@ -7,6 +7,18 @@ export const hotelInfo = {
   location: "Santorini, Greece",
   email: "reservations@hendry-hotel.com",
   phone: "+30 22860 71234",
+  heroBadge: "Santorini, Greece",
+  heroTitle: "Where Luxury Meets",
+  heroTitleAccent: "Serenity",
+  heroSubtitle:
+    "A curated collection of extraordinary spaces designed to elevate your senses and nourish your soul.",
+  ctaBadge: "Begin Your Journey",
+  ctaTitle: "Your Escape Awaits",
+  ctaText:
+    "Discover a world where every detail has been considered, every moment has been crafted, and every experience is uniquely yours.",
+  aboutStory:
+    "Hendry was born from a simple yet profound belief: that luxury should be felt, not merely seen. Founded in 2018 by Alexandros Petridis, our hotel emerged from a desire to create a space where the timeless beauty of the Mediterranean meets contemporary elegance.\n\nPerched on the volcanic cliffs of Santorini, Greece, Hendry draws inspiration from the island's dramatic landscapes — the deep blue of the Aegean, the blinding white of traditional architecture, and the golden hues of the setting sun.\n\nEvery aspect of Hendry has been thoughtfully designed to honor the traditions of Greek hospitality while pushing the boundaries of modern luxury. We believe that true sophistication lies in the details — from the hand-selected linens to the locally sourced ingredients in our kitchen.",
+  aboutImage: "/images/atheneum-loft-8-1920.jpg",
 };
 
 export const rooms = [
