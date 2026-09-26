@@ -13,7 +13,7 @@ export default function Gallery() {
           subtitle="A glimpse into the world of Hendry — where every moment becomes a lasting memory."
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px] grid-flow-dense">
           {galleryImages.map((img, i) => (
             <motion.div
               key={i}

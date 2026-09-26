@@ -10,14 +10,13 @@ const TABLES = {
   experiences: "experiences",
   stats: "stats",
   testimonials: "testimonials",
-  teamMembers: "team_members",
   values: "core_values",
   galleryImages: "gallery_images",
 };
 
 const ORDERED = [
   "rooms", "experiences", "stats", "testimonials",
-  "teamMembers", "values", "galleryImages",
+  "values", "galleryImages",
 ];
 
 export function ContentProvider({ children }) {
@@ -27,7 +26,6 @@ export function ContentProvider({ children }) {
     experiences: staticData.experiences,
     stats: staticData.stats,
     testimonials: staticData.testimonials,
-    teamMembers: staticData.teamMembers,
     values: staticData.values,
     galleryImages: staticData.galleryImages,
   }));

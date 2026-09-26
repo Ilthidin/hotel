@@ -148,12 +148,12 @@ export default function RoomDetail() {
                   ))}
                 </div>
 
-                <a
-                  href="mailto:reservations@hendry-hotel.com"
+                <Link
+                  to={`/book-now?room=${room.slug}`}
                   className="block w-full py-4 bg-accent text-primary text-center text-sm tracking-[0.2em] uppercase font-medium hover:bg-accent-light transition-all duration-300"
                 >
                   Reserve This Room
-                </a>
+                </Link>
 
                 <p className="text-center text-white/30 text-xs mt-4">
                   Free cancellation up to 48 hours before check-in

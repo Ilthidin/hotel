@@ -3,9 +3,11 @@
 -- Run this in Supabase Dashboard > SQL Editor.
 --
 -- After running this file:
--- 1. Go to Authentication > Users and create your admin user
---    (email + password). Admin write access is granted to any
---    authenticated user via the policies below.
+-- 1. Create your admin user at Authentication > Users: email
+--    admin@admin.hendry.local (must match the RLS policy below and
+--    <VITE_ADMIN_USERNAME>@admin.hendry.local), with any password you like.
+--    Admin write access is granted to any authenticated user via the
+--    policies below.
 -- ============================================================
 
 -- ---------- hotel_info (singleton, id = 1) ----------
@@ -74,16 +76,6 @@ create table if not exists public.testimonials (
   rating int not null default 5 check (rating between 1 and 5)
 );
 
--- ---------- team members ----------
-create table if not exists public.team_members (
-  id bigint generated always as identity primary key,
-  "sortOrder" int not null default 0,
-  name text not null,
-  role text default '',
-  image text default '',
-  bio text default ''
-);
-
 -- ---------- core values ("values" is a reserved word) ----------
 create table if not exists public.core_values (
   id bigint generated always as identity primary key,
@@ -103,15 +95,16 @@ create table if not exists public.gallery_images (
 );
 
 -- ============================================================
--- Row Level Security: everyone can read, only authenticated
--- admins can write.
+-- Row Level Security: everyone can read; only the admin email
+-- (the user you create at Authentication > Users) can write.
+-- Keep the email in sync with <VITE_ADMIN_USERNAME>@admin.hendry.local.
 -- ============================================================
 do $$
 declare t text;
 begin
   foreach t in array array[
     'hotel_info', 'rooms', 'experiences', 'stats',
-    'testimonials', 'team_members', 'core_values', 'gallery_images'
+    'testimonials', 'core_values', 'gallery_images'
   ]
   loop
     execute format('alter table public.%I enable row level security;', t);
@@ -125,8 +118,8 @@ begin
       'drop policy if exists "admin_write" on public.%I;', t);
     execute format(
       'create policy "admin_write" on public.%I for all
-         using (auth.role() = ''authenticated'')
-         with check (auth.role() = ''authenticated'');', t);
+         using (auth.jwt() ->> ''email'' = ''admin@admin.hendry.local'')
+         with check (auth.jwt() ->> ''email'' = ''admin@admin.hendry.local'');', t);
   end loop;
 end $$;
 
@@ -210,14 +203,6 @@ insert into public.testimonials ("sortOrder", text, author, origin, rating) valu
 (1, 'Hendry redefined what luxury means to us. The attention to detail is extraordinary — from the hand-selected artwork in our suite to the personalized welcome note.', 'Charlotte & James', 'London, UK', 5),
 (2, 'We''ve stayed at world-class hotels across the globe, but nothing compares to the warmth and elegance of Hendry. The sunset from our terrace was magical.', 'Marco & Elena', 'Milan, Italy', 5),
 (3, 'The team at Hendry made our anniversary unforgettable. Every moment felt curated yet effortless — the hallmark of true luxury hospitality.', 'Sarah Chen', 'Singapore', 5);
-
-insert into public.team_members ("sortOrder", name, role, image, bio) values
-(1, 'Alexandros Petridis', 'Founder & Director', 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80',
- 'With over 20 years in luxury hospitality, Alexandros founded Hendry to create a new standard of Mediterranean elegance.'),
-(2, 'Elena Vasiliou', 'Head of Guest Relations', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',
- 'Elena ensures every guest''s journey is seamless from arrival to departure, crafting personalized experiences that exceed expectations.'),
-(3, 'Dimitris Alexopoulos', 'Executive Chef', 'https://images.unsplash.com/photo-1577219491135-ce390783d7bf?w=400&q=80',
- 'A Michelin-starred chef who brings the flavors of the Aegean to life, Dimitris transforms local ingredients into culinary masterpieces.');
 
 insert into public.core_values ("sortOrder", title, description, icon) values
 (1, 'Timeless Elegance', 'We believe true luxury is not about opulence, but about refined simplicity that stands the test of time.', '✦'),

@@ -32,13 +32,13 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 relative">
             <Link to="/" className="relative group">
               <Logo />
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent transition-all duration-300 group-hover:w-full" />
             </Link>
 
-            <div className="hidden md:flex items-center gap-10">
+            <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -65,12 +65,12 @@ export default function Navbar() {
               ))}
             </div>
 
-            <a
-              href="mailto:reservations@hendry-hotel.com"
+            <Link
+              to="/book-now"
               className="hidden md:block px-6 py-2.5 border border-accent/50 text-accent text-xs tracking-[0.2em] uppercase hover:bg-accent hover:text-primary transition-all duration-300"
             >
               Book Now
-            </a>
+            </Link>
 
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -129,7 +129,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ delay: 0.3, duration: 0.4 }}
-                href="mailto:reservations@hendry-hotel.com"
+                href="/book-now"
                 className="mt-4 px-8 py-3 border border-accent text-accent text-sm tracking-[0.2em] uppercase hover:bg-accent hover:text-primary transition-all duration-300"
               >
                 Book Now

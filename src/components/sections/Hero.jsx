@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useContent } from "../../context/ContentContext";
 
 const VIDEOS = [
-  { src: "/videos/santorini-drone.mp4", poster: "/images/atheneum-loft-8-1920.jpg" },
-  { src: "/videos/santorini-aerial.mp4", poster: "/images/atheneum-loft-8-1920.jpg" },
+  { src: "/videos/santorini-drone.mp4" },
+  { src: "/videos/santorini-aerial.mp4" },
 ];
 
 export default function Hero() {
@@ -53,7 +53,6 @@ export default function Hero() {
             key={video.src}
             ref={(el) => (videoRefs.current[i] = el)}
             src={video.src}
-            poster={video.poster}
             autoPlay
             muted
             playsInline
@@ -109,10 +108,10 @@ export default function Hero() {
           className="mt-12 flex flex-col sm:flex-row gap-4"
         >
           <Link
-            to="/rooms"
+            to="/book-now"
             className="px-10 py-4 bg-accent text-primary text-sm tracking-[0.2em] uppercase font-medium hover:bg-accent-light transition-all duration-300 inline-flex items-center justify-center gap-3"
           >
-            Explore Rooms
+            Book Your Stay
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

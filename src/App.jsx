@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import RoomDetail from "./pages/RoomDetail";
 import About from "./pages/About";
+import BookNow from "./pages/BookNow";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -31,6 +32,7 @@ function SiteLayout() {
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/rooms/:slug" element={<RoomDetail />} />
         <Route path="/about" element={<About />} />
+        <Route path="/book-now" element={<BookNow />} />
       </Routes>
       <Footer />
     </>

@@ -114,22 +114,6 @@ export const adminSchema = [
     defaults: { sortOrder: 99, rating: 5 },
   },
   {
-    key: "teamMembers",
-    label: "Team",
-    table: "team_members",
-    displayField: "name",
-    imageField: "image",
-    subtitleField: (member) => member.role,
-    fields: [
-      { name: "sortOrder", label: "Sort Order", type: "number" },
-      { name: "name", label: "Name", type: "text" },
-      { name: "role", label: "Role", type: "text" },
-      { name: "image", label: "Photo URL", type: "image" },
-      { name: "bio", label: "Bio", type: "textarea" },
-    ],
-    defaults: { sortOrder: 99 },
-  },
-  {
     key: "values",
     label: "Core Values",
     table: "core_values",

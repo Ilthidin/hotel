@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
+import { Gem, HeartHandshake, Coffee, Leaf } from "lucide-react";
 import { useContent } from "../context/ContentContext";
 import SectionTitle from "../components/common/SectionTitle";
 
+const VALUE_ICONS = {
+  gem: Gem,
+  "heart-handshake": HeartHandshake,
+  coffee: Coffee,
+  leaf: Leaf,
+};
+
 export default function About() {
-  const { hotelInfo, teamMembers, values, galleryImages } = useContent().content;
+  const { hotelInfo, values, galleryImages } = useContent().content;
   const storyParagraphs = (hotelInfo.aboutStory || "")
     .split(/\n\s*\n/)
     .map((p) => p.trim())
@@ -107,7 +115,10 @@ export default function About() {
                 className="p-8 border border-white/5 hover:border-accent/20 transition-all duration-500 group"
               >
                 <span className="text-3xl text-accent block mb-6 group-hover:scale-110 transition-transform duration-300 origin-left">
-                  {val.icon}
+                  {(() => {
+                    const Icon = VALUE_ICONS[val.iconName];
+                    return Icon ? <Icon className="inline-block" /> : val.icon;
+                  })()}
                 </span>
                 <h3 className="font-heading text-xl text-white mb-4">{val.title}</h3>
                 <p className="text-sm text-white/50 leading-relaxed">{val.description}</p>
@@ -125,7 +136,7 @@ export default function About() {
             title={<>Life at <span className="italic text-accent">Hendry</span></>}
           />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px]">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[200px] md:auto-rows-[250px] grid-flow-dense">
             {galleryImages.map((img, i) => (
               <motion.div
                 key={i}

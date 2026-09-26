@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
+const ADMIN_USERNAME = (import.meta.env.VITE_ADMIN_USERNAME || "admin").trim();
 const ADMIN_EMAIL_SUFFIX = "@admin.hendry.local";
 
 export default function AdminLogin() {
   const { signIn, configured } = useAuth();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(ADMIN_USERNAME);
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -15,8 +16,13 @@ export default function AdminLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    const user = username.trim();
+    if (user !== ADMIN_USERNAME) {
+      setError("Invalid username or password.");
+      return;
+    }
     setBusy(true);
-    const email = username.trim().toLowerCase() + ADMIN_EMAIL_SUFFIX;
+    const email = user + ADMIN_EMAIL_SUFFIX;
     const err = await signIn(email, password);
     setBusy(false);
     if (err) {
@@ -59,7 +65,7 @@ export default function AdminLogin() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full bg-primary/60 border border-white/10 focus:border-accent/60 outline-none px-4 py-3 text-white text-sm transition-colors"
-                placeholder="admin"
+                placeholder={ADMIN_USERNAME}
               />
             </div>
 

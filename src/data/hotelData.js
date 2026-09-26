@@ -72,7 +72,7 @@ export const rooms = [
       "Outdoor rain shower",
       "Full kitchenette",
       "Dedicated villa host",
-      "Herm├¿s bath products",
+      "Hermès bath products",
       "Sonos surround system",
     ],
   },
@@ -96,10 +96,10 @@ export const rooms = [
       "The crown jewel of Hendry. The Caldera Penthouse spans the entire top floor, offering 360-degree views that will take your breath away. A private rooftop terrace with a heated pool, outdoor kitchen, and lounge area make this the ultimate retreat.",
     amenities: [
       "Rooftop heated pool",
-      "360┬░ panoramic views",
+      "360° panoramic views",
       "Private dining room",
       "Wine cellar selection",
-      "Herm├¿s amenities",
+      "Hermès amenities",
       "Personal chef available",
     ],
   },
@@ -190,7 +190,7 @@ export const experiences = [
   {
     id: 1,
     title: "Private Yacht Charter",
-    description: "Sail the caldera at sunset aboard a traditional wooden ca├»que.",
+    description: "Sail the caldera at sunset aboard a traditional wooden caïque.",
     image: "/images/atheneum-loft-2-800.jpg",
   },
   {
@@ -223,7 +223,7 @@ export const stats = [
 export const testimonials = [
   {
     id: 1,
-    text: "Hendry redefined what luxury means to us. The attention to detail is extraordinary ΓÇö from the hand-selected artwork in our suite to the personalized welcome note.",
+    text: "Hendry redefined what luxury means to us. The attention to detail is extraordinary — from the hand-selected artwork in our suite to the personalized welcome note.",
     author: "Charlotte & James",
     origin: "London, UK",
     rating: 5,
@@ -237,31 +237,10 @@ export const testimonials = [
   },
   {
     id: 3,
-    text: "The team at Hendry made our anniversary unforgettable. Every moment felt curated yet effortless ΓÇö the hallmark of true luxury hospitality.",
+    text: "The team at Hendry made our anniversary unforgettable. Every moment felt curated yet effortless — the hallmark of true luxury hospitality.",
     author: "Sarah Chen",
     origin: "Singapore",
     rating: 5,
-  },
-];
-
-export const teamMembers = [
-  {
-    name: "Alexandros Petridis",
-    role: "Founder & Director",
-    image: "/images/atheneum-loft-6-400.jpg",
-    bio: "With over 20 years in luxury hospitality, Alexandros founded Hendry to create a new standard of Mediterranean elegance.",
-  },
-  {
-    name: "Elena Vasiliou",
-    role: "Head of Guest Relations",
-    image: "/images/atheneum-loft-7-400.jpg",
-    bio: "Elena ensures every guest's journey is seamless from arrival to departure, crafting personalized experiences that exceed expectations.",
-  },
-  {
-    name: "Dimitris Alexopoulos",
-    role: "Executive Chef",
-    image: "/images/atheneum-loft-4-800.jpg",
-    bio: "A Michelin-starred chef who brings the flavors of the Aegean to life, Dimitris transforms local ingredients into culinary masterpieces.",
   },
 ];
 
@@ -270,25 +249,29 @@ export const values = [
     title: "Timeless Elegance",
     description:
       "We believe true luxury is not about opulence, but about refined simplicity that stands the test of time.",
-    icon: "Γ£ª",
+    icon: "✦",
+    iconName: "gem",
   },
   {
     title: "Authentic Connection",
     description:
       "Every interaction is an opportunity to create a genuine human connection that transcends the ordinary.",
-    icon: "Γùê",
+    icon: "◈",
+    iconName: "heart-handshake",
   },
   {
     title: "Mindful Hospitality",
     description:
       "We anticipate needs before they arise, delivering intuitive service that feels both effortless and deeply personal.",
-    icon: "Γùç",
+    icon: "◇",
+    iconName: "coffee",
   },
   {
     title: "Sustainable Luxury",
     description:
       "Our commitment to the environment is woven into every aspect of the Hendry experience, without compromise.",
-    icon: "Γ¼í",
+    icon: "⬡",
+    iconName: "leaf",
   },
 ];
 
@@ -322,6 +305,11 @@ export const galleryImages = [
     src: "/images/atheneum-loft-11-800.jpg",
     alt: "Private beach",
     span: "col-span-2 row-span-1",
+  },
+  {
+    src: "/images/honeymoon-suite-800.jpg",
+    alt: "Jacuzzi terrace at dusk",
+    span: "col-span-1 row-span-1",
   },
 ];
 
