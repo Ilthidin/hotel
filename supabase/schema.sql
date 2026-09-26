@@ -124,6 +124,52 @@ begin
 end $$;
 
 -- ============================================================
+-- Dedupe
+--
+-- The tables below have no unique constraint, and the seed
+-- inserts that follow used to run unguarded, so every re-run of
+-- this file appended a second copy of each row. These deletes
+-- drop any row that matches a lower-id row in every column,
+-- keeping the oldest. Rows an admin has since edited differ in
+-- value and are left alone, so this is safe to run repeatedly
+-- and is a no-op once the data is clean.
+-- ============================================================
+delete from public.experiences a using public.experiences b
+where a.id > b.id
+  and a."sortOrder" is not distinct from b."sortOrder"
+  and a.title is not distinct from b.title
+  and a.description is not distinct from b.description
+  and a.image is not distinct from b.image;
+
+delete from public.stats a using public.stats b
+where a.id > b.id
+  and a."sortOrder" is not distinct from b."sortOrder"
+  and a.value is not distinct from b.value
+  and a.label is not distinct from b.label;
+
+delete from public.testimonials a using public.testimonials b
+where a.id > b.id
+  and a."sortOrder" is not distinct from b."sortOrder"
+  and a.text is not distinct from b.text
+  and a.author is not distinct from b.author
+  and a.origin is not distinct from b.origin
+  and a.rating is not distinct from b.rating;
+
+delete from public.core_values a using public.core_values b
+where a.id > b.id
+  and a."sortOrder" is not distinct from b."sortOrder"
+  and a.title is not distinct from b.title
+  and a.description is not distinct from b.description
+  and a.icon is not distinct from b.icon;
+
+delete from public.gallery_images a using public.gallery_images b
+where a.id > b.id
+  and a."sortOrder" is not distinct from b."sortOrder"
+  and a.src is not distinct from b.src
+  and a.alt is not distinct from b.alt
+  and a.span is not distinct from b.span;
+
+-- ============================================================
 -- Seed data (mirrors src/data/hotelData.js)
 -- ============================================================
 insert into public.hotel_info (
@@ -187,33 +233,50 @@ insert into public.rooms (
  '["Double-height ceiling","Curated library collection","Ergonomic writing desk","Nespresso machine","Bose wireless speaker","Complimentary late checkout"]'::jsonb)
 on conflict (slug) do nothing;
 
-insert into public.experiences ("sortOrder", title, description, image) values
-(1, 'Private Yacht Charter', 'Sail the caldera at sunset aboard a traditional wooden caïque.', 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'),
-(2, 'Wine Tasting Journey', 'Discover Assyrtiko and Mavrotragano at exclusive volcanic vineyards.', 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80'),
-(3, 'Cliffside Dining', 'An intimate seven-course dinner perched above the caldera.', 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80'),
-(4, 'Wellness Sanctuary', 'Holistic treatments inspired by ancient Greek healing rituals.', 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80');
+-- These five tables have no unique constraint, so "on conflict do
+-- nothing" would never fire and a re-run would duplicate every row.
+-- Guard each seed on the table being empty instead. Re-running this
+-- file therefore never overwrites or duplicates admin edits.
+do $$
+begin
+  if not exists (select 1 from public.experiences) then
+    insert into public.experiences ("sortOrder", title, description, image) values
+    (1, 'Private Yacht Charter', 'Sail the caldera at sunset aboard a traditional wooden caïque.', 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'),
+    (2, 'Wine Tasting Journey', 'Discover Assyrtiko and Mavrotragano at exclusive volcanic vineyards.', 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80'),
+    (3, 'Cliffside Dining', 'An intimate seven-course dinner perched above the caldera.', 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80'),
+    (4, 'Wellness Sanctuary', 'Holistic treatments inspired by ancient Greek healing rituals.', 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80');
+  end if;
 
-insert into public.stats ("sortOrder", value, label) values
-(1, '6', 'Unique Rooms'),
-(2, '98%', 'Guest Satisfaction'),
-(3, '7', 'Years of Excellence'),
-(4, '24/7', 'Dedicated Service');
+  if not exists (select 1 from public.stats) then
+    insert into public.stats ("sortOrder", value, label) values
+    (1, '6', 'Unique Rooms'),
+    (2, '98%', 'Guest Satisfaction'),
+    (3, '7', 'Years of Excellence'),
+    (4, '24/7', 'Dedicated Service');
+  end if;
 
-insert into public.testimonials ("sortOrder", text, author, origin, rating) values
-(1, 'Hendry redefined what luxury means to us. The attention to detail is extraordinary — from the hand-selected artwork in our suite to the personalized welcome note.', 'Charlotte & James', 'London, UK', 5),
-(2, 'We''ve stayed at world-class hotels across the globe, but nothing compares to the warmth and elegance of Hendry. The sunset from our terrace was magical.', 'Marco & Elena', 'Milan, Italy', 5),
-(3, 'The team at Hendry made our anniversary unforgettable. Every moment felt curated yet effortless — the hallmark of true luxury hospitality.', 'Sarah Chen', 'Singapore', 5);
+  if not exists (select 1 from public.testimonials) then
+    insert into public.testimonials ("sortOrder", text, author, origin, rating) values
+    (1, 'Hendry redefined what luxury means to us. The attention to detail is extraordinary — from the hand-selected artwork in our suite to the personalized welcome note.', 'Charlotte & James', 'London, UK', 5),
+    (2, 'We''ve stayed at world-class hotels across the globe, but nothing compares to the warmth and elegance of Hendry. The sunset from our terrace was magical.', 'Marco & Elena', 'Milan, Italy', 5),
+    (3, 'The team at Hendry made our anniversary unforgettable. Every moment felt curated yet effortless — the hallmark of true luxury hospitality.', 'Sarah Chen', 'Singapore', 5);
+  end if;
 
-insert into public.core_values ("sortOrder", title, description, icon) values
-(1, 'Timeless Elegance', 'We believe true luxury is not about opulence, but about refined simplicity that stands the test of time.', '✦'),
-(2, 'Authentic Connection', 'Every interaction is an opportunity to create a genuine human connection that transcends the ordinary.', '◈'),
-(3, 'Mindful Hospitality', 'We anticipate needs before they arise, delivering intuitive service that feels both effortless and deeply personal.', '◇'),
-(4, 'Sustainable Luxury', 'Our commitment to the environment is woven into every aspect of the Hendry experience, without compromise.', '⬡');
+  if not exists (select 1 from public.core_values) then
+    insert into public.core_values ("sortOrder", title, description, icon) values
+    (1, 'Timeless Elegance', 'We believe true luxury is not about opulence, but about refined simplicity that stands the test of time.', '✦'),
+    (2, 'Authentic Connection', 'Every interaction is an opportunity to create a genuine human connection that transcends the ordinary.', '◈'),
+    (3, 'Mindful Hospitality', 'We anticipate needs before they arise, delivering intuitive service that feels both effortless and deeply personal.', '◇'),
+    (4, 'Sustainable Luxury', 'Our commitment to the environment is woven into every aspect of the Hendry experience, without compromise.', '⬡');
+  end if;
 
-insert into public.gallery_images ("sortOrder", src, alt, span) values
-(1, 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80', 'Hotel exterior at sunset', 'col-span-2 row-span-2'),
-(2, 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80', 'Infinity pool overlooking the sea', 'col-span-1 row-span-1'),
-(3, 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', 'Elegant room interior', 'col-span-1 row-span-1'),
-(4, 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', 'Fine dining experience', 'col-span-1 row-span-2'),
-(5, 'https://images.unsplash.com/photo-1540555700478-4be289fbec6c?w=800&q=80', 'Spa treatment room', 'col-span-1 row-span-1'),
-(6, 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80', 'Private beach', 'col-span-2 row-span-1');
+  if not exists (select 1 from public.gallery_images) then
+    insert into public.gallery_images ("sortOrder", src, alt, span) values
+    (1, 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80', 'Hotel exterior at sunset', 'col-span-2 row-span-2'),
+    (2, 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80', 'Infinity pool overlooking the sea', 'col-span-1 row-span-1'),
+    (3, 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', 'Elegant room interior', 'col-span-1 row-span-1'),
+    (4, 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', 'Fine dining experience', 'col-span-1 row-span-2'),
+    (5, 'https://images.unsplash.com/photo-1540555700478-4be289fbec6c?w=800&q=80', 'Spa treatment room', 'col-span-1 row-span-1'),
+    (6, 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80', 'Private beach', 'col-span-2 row-span-1');
+  end if;
+end $$;

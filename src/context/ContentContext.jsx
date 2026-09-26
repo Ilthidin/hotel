@@ -19,6 +19,18 @@ const ORDERED = [
   "values", "galleryImages",
 ];
 
+// Identity per collection, used to drop rows the database holds twice.
+// Only the tables below lack a unique constraint, so a re-run of
+// supabase/schema.sql can leave two identical copies of every row.
+const DEDUPE_KEYS = {
+  rooms: (r) => r.slug,
+  experiences: (r) => r.title,
+  stats: (r) => `${r.value}|${r.label}`,
+  testimonials: (r) => `${r.author}|${r.text}`,
+  values: (r) => r.title,
+  galleryImages: (r) => `${r.src}|${r.alt}`,
+};
+
 export function ContentProvider({ children }) {
   const [content, setContent] = useState(() => ({
     hotelInfo: staticData.hotelInfo,
@@ -52,7 +64,10 @@ export function ContentProvider({ children }) {
           ok = false;
           return;
         }
-        next[key] = key === "values" ? data : data.map(normalizeItem);
+        next[key] = dedupe(
+          key === "values" ? data : data.map(normalizeItem),
+          DEDUPE_KEYS[key]
+        );
       });
 
       const { data: info, error: infoError } = await supabase
@@ -85,6 +100,17 @@ export function ContentProvider({ children }) {
       {children}
     </ContentContext.Provider>
   );
+}
+
+function dedupe(items, keyOf) {
+  if (!keyOf) return items;
+  const seen = new Set();
+  return items.filter((item) => {
+    const key = keyOf(item);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function normalizeItem(item) {
